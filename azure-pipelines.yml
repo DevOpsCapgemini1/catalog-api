@@ -27,9 +27,9 @@ steps:
     contents: |
       **/*
       !.github/**/*
-      !node_modules/**/*
+      !spec/**/*
     targetFolder: $(Build.ArtifactStagingDirectory)/npm
-  displayName: 'Copy all files except node_modules and .github'
+  displayName: 'Copy all files except spec and .github'
 
 - task: PublishPipelineArtifact@1
   inputs:
