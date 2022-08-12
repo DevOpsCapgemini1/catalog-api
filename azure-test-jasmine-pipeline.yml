@@ -19,12 +19,9 @@ steps:
 - task: CopyFiles@2
   inputs:
     sourceFolder: '$(Build.SourcesDirectory)'
-    contents: test_results
-    targetFolder: $(Build.ArtifactStagingDirectory)/npm
-  displayName: 'Copy test_results'
-
-- task: PublishPipelineArtifact@1
+    contents: '**/$(BuildConfiguration)/**/?(*.trx)'
+    targetFolder: '$(Build.ArtifactStagingDirectory)'
+- task: PublishBuildArtifacts@1
   inputs:
-    targetPath: '$(Build.ArtifactStagingDirectory)/npm'
-    artifactName: jasmine-test
-  displayName: 'Publish jasmine-test artifact'
+    pathToPublish: '$(Build.ArtifactStagingDirectory)'
+    artifactName: tests
