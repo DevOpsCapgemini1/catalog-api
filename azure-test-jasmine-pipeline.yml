@@ -16,11 +16,14 @@ steps:
     npm run test
   displayName: 'npm install test and  build'
 
-- task: CopyFiles@2
+- task: PublishTestResults@2
   inputs:
-    contents: '**'
-    targetFolder: $(Build.ArtifactStagingDirectory)
-- task: PublishBuildArtifacts@1
+    testResultsFormat: 'VSTest'
+    testResultsFiles: '**/*.trx'
+    searchFolder: '$(Pipeline.Workspace)'
+    testRunTitle: 'Tests'
+
+- task: PublishPipelineArtifact@1
   inputs:
-    pathToPublish: $(Build.ArtifactStagingDirectory)
-    artifactName: test-results
+    targetPath: '$(Pipeline.Workspace)'
+    publishLocation: 'pipeline'
