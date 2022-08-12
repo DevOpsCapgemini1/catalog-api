@@ -18,10 +18,9 @@ steps:
 
 - task: CopyFiles@2
   inputs:
-    sourceFolder: '$(Build.SourcesDirectory)'
-    contents: '**/$(BuildConfiguration)/**/?(*.trx)'
-    targetFolder: '$(Build.ArtifactStagingDirectory)'
+    contents: 'test_results/**'
+    targetFolder: $(Build.ArtifactStagingDirectory)
 - task: PublishBuildArtifacts@1
   inputs:
-    pathToPublish: '$(Build.ArtifactStagingDirectory)'
-    artifactName: tests
+    pathToPublish: $(Build.ArtifactStagingDirectory)
+    artifactName: test-results
