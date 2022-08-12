@@ -19,6 +19,7 @@ steps:
 - script: npm run test
 - task: PublishTestResults@2
   inputs:
+    testResultsFormat: 'VSTest'
     testResultsFiles: '**/*.trx'
 
 # this code takes all the files in $(Build.ArtifactStagingDirectory) and uploads them as an artifact of your build.
