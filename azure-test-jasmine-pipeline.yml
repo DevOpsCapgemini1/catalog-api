@@ -12,6 +12,7 @@ steps:
 
 - script: |
     npm install
+    npm install jasmine-trx-reporter
     npm run build
     npm run test
   displayName: 'npm install test and  build'
